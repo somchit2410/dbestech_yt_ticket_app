@@ -1,7 +1,12 @@
 import 'package:dbestech_yt_ticket_app/base/res/media.dart';
 import 'package:dbestech_yt_ticket_app/base/res/styles/app_style.dart';
+
+import 'package:dbestech_yt_ticket_app/base/widgets/app_double_text.dart';
+import 'package:dbestech_yt_ticket_app/base/widgets/ticket_view.dart';
 import 'package:fluentui_icons/fluentui_icons.dart';
 import 'package:flutter/material.dart';
+
+import '../base/utils/app_json.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -14,6 +19,7 @@ class HomeScreen extends StatelessWidget {
         children: [
           const SizedBox(height: 40),
           Container(
+            // padding ໄລຍະເບື້ອງໃນ
             padding: const EdgeInsets.symmetric(
               horizontal: 20,
             ),
@@ -69,6 +75,23 @@ class HomeScreen extends StatelessWidget {
                         style: TextStyle(color: Colors.grey),
                       ),
                     ],
+                  ),
+                ),
+                const SizedBox(height: 30),
+                const AppDoubleText(
+                  titleText: 'Upcomming Flights',
+                  subText: 'View all',
+                ),
+                const SizedBox(height: 20),
+
+                // Ticket list scrollable
+                SingleChildScrollView(
+                  scrollDirection: Axis.horizontal,
+                  child: Row(
+                    children: ticketList
+                        .take(2)
+                        .map((singleTicket) => TicketView(ticket: singleTicket))
+                        .toList(),
                   ),
                 ),
               ],
