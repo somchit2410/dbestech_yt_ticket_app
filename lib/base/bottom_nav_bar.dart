@@ -1,4 +1,6 @@
-import 'package:dbestech_yt_ticket_app/screens/home_screen.dart';
+import 'package:dbestech_yt_ticket_app/screens/home/home_screen.dart';
+import 'package:dbestech_yt_ticket_app/screens/search/search_screen.dart';
+import 'package:dbestech_yt_ticket_app/screens/ticket/ticket_screen.dart';
 import 'package:fluentui_icons/fluentui_icons.dart';
 import 'package:flutter/material.dart';
 
@@ -12,8 +14,8 @@ class BottomNavBar extends StatefulWidget {
 class _BottomNavBarState extends State<BottomNavBar> {
   final appScreens = [
     const HomeScreen(),
-    const Text("Search"),
-    const Text("Tickets"),
+    const SearchScreen(),
+    const TicketScreen(),
     const Text("Profile"),
   ];
   // change index for BottomNavBar

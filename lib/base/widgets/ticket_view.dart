@@ -8,8 +8,15 @@ import 'package:dbestech_yt_ticket_app/base/widgets/text_style_third.dart';
 import 'package:flutter/material.dart';
 
 class TicketView extends StatelessWidget {
-  const TicketView({super.key, required this.ticket});
+  const TicketView(
+      {super.key,
+      required this.ticket,
+      this.wholeScreen = false,
+      this.isColor});
+
+  final bool wholeScreen;
   final Map<String, dynamic> ticket;
+  final bool? isColor;
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +28,7 @@ class TicketView extends StatelessWidget {
       width: size.width * 0.85,
       height: 179,
       child: Container(
-        margin: const EdgeInsets.only(right: 16),
+        margin: EdgeInsets.only(right: wholeScreen == true ? 0 : 16),
         child: Column(
           children: [
             // ພາກສ່ວນຂອງປີ້ຍົນເບື້ອງເທິງ
@@ -29,7 +36,9 @@ class TicketView extends StatelessWidget {
               // margin ໄລຍະເບື້ອງນອກ
               padding: const EdgeInsets.all(16),
               decoration: BoxDecoration(
-                color: AppStyle.ticketBlue,
+                color: isColor == null
+                    ? AppStyle.ticketBlue
+                    : AppStyle.ticketColor,
                 borderRadius: const BorderRadius.only(
                     topLeft: Radius.circular(21),
                     topRight: Radius.circular(21)),
@@ -39,7 +48,8 @@ class TicketView extends StatelessWidget {
                   // ສະແດງຂໍ້ມູນຍົນຂາອອກ ແລະ ປາຍທາງດ້ວຍສັນຍາລັກ
                   Row(
                     children: [
-                      TextStyle3(text: ticket["from"]["code"]),
+                      TextStyle3(
+                          text: ticket["from"]["code"], isColor: isColor),
 
                       Expanded(child: Container()),
                       // ສັນຍາລັກຍົນບີນ

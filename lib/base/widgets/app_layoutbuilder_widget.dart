@@ -1,3 +1,4 @@
+import 'package:dbestech_yt_ticket_app/base/res/styles/app_style.dart';
 import 'package:flutter/material.dart';
 
 class AppLayoutBuilderWidget extends StatelessWidget {
@@ -18,8 +19,8 @@ class AppLayoutBuilderWidget extends StatelessWidget {
             (index) => SizedBox(
               width: width,
               height: 1,
-              child: const DecoratedBox(
-                decoration: BoxDecoration(color: Colors.white),
+              child: DecoratedBox(
+                decoration: BoxDecoration(color: AppStyle.ticketColor),
               ),
             ),
           ),

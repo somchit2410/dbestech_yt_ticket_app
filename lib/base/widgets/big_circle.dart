@@ -1,3 +1,4 @@
+import 'package:dbestech_yt_ticket_app/base/res/styles/app_style.dart';
 import 'package:flutter/material.dart';
 
 class BigCircle extends StatelessWidget {
@@ -11,7 +12,7 @@ class BigCircle extends StatelessWidget {
       width: 10,
       child: DecoratedBox(
         decoration: BoxDecoration(
-          color: Colors.white,
+          color: AppStyle.ticketColor,
           borderRadius: isRight == true
               ? const BorderRadius.only(
                   topLeft: Radius.circular(10),

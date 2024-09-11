@@ -12,7 +12,7 @@ class TextStyle4 extends StatelessWidget {
     return Text(
       text,
       style: AppStyle.headLineStyle4.copyWith(
-        color: Colors.white,
+        color: AppStyle.ticketColor,
       ),
       textAlign: textAlign,
     );
