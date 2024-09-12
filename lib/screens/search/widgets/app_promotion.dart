@@ -18,7 +18,7 @@ class AppPromotion extends StatelessWidget {
           padding: const EdgeInsets.all(15),
           // margin: const EdgeInsets.only(right: 15),
           width: size.width * 0.45,
-          height: 410,
+          height: 440,
           decoration: BoxDecoration(
               color: AppStyle.ticketColor,
               borderRadius: BorderRadius.circular(18),
@@ -60,7 +60,7 @@ class AppPromotion extends StatelessWidget {
                   padding: const EdgeInsets.all(15),
                   // margin: const EdgeInsets.only(right: 0),
                   width: size.width * 0.42,
-                  height: 200,
+                  height: 215,
                   decoration: BoxDecoration(
                       color: AppStyle.circleColor,
                       borderRadius: BorderRadius.circular(18),
@@ -82,7 +82,7 @@ class AppPromotion extends StatelessWidget {
                       const SizedBox(height: 10),
                       Text(
                         "Take the survey about our services and get discount",
-                        style: AppStyle.headLineStyle2.copyWith(
+                        style: AppStyle.headLineStyle3.copyWith(
                           color: AppStyle.ticketColor,
                         ),
                       )
@@ -115,7 +115,7 @@ class AppPromotion extends StatelessWidget {
               padding: const EdgeInsets.all(15),
               // margin: const EdgeInsets.only(right: 0),
               width: size.width * 0.42,
-              height: 200,
+              height: 215,
               decoration: BoxDecoration(
                   color: AppStyle.ticketOrange,
                   borderRadius: BorderRadius.circular(18),

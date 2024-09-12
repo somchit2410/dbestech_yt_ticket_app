@@ -11,4 +11,5 @@ class AppMedia {
   static const bearFace = "$_baseImage/bear_emoji.png";
   static const smilingLove = "$_baseImage/yellow.png";
   static const joyEmoji = "$_baseImage/emoji_icon.png";
+  static const visaLogo = "$_baseImage/visa_card.png";
 }

@@ -1,5 +1,9 @@
 import 'package:dbestech_yt_ticket_app/base/bottom_nav_bar.dart';
+import 'package:dbestech_yt_ticket_app/base/res/app_routes.dart';
+import 'package:dbestech_yt_ticket_app/screens/home/all_hotels.dart';
+
 import 'package:dbestech_yt_ticket_app/screens/home/all_tickets.dart';
+import 'package:dbestech_yt_ticket_app/screens/ticket/ticket_screen.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -25,8 +29,10 @@ class MyApp extends StatelessWidget {
 
       // ສ້າງ map ຂອງໜ້າແອັບແຕ່ລະໜ້າເພື່ອຄວາມງ່າຍໃນການ navigate ໂດຍໃຊ້ key ແທນ
       routes: {
-        "/": (context) => const BottomNavBar(),
-        "all_tickets": (context) => const AllTickets(),
+        AppRoutes.homePage: (context) => const BottomNavBar(),
+        AppRoutes.allTickets: (context) => const AllTickets(),
+        AppRoutes.allHotels: (context) => const AllHotels(),
+        AppRoutes.ticketScreen: (context) => const TicketScreen(),
       },
     );
   }

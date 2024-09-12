@@ -7,19 +7,22 @@ class AppColumnTextLayout extends StatelessWidget {
       {super.key,
       required this.upperText,
       required this.belowText,
-      required this.crossAlign});
+      required this.crossAlign,
+      this.isColor});
+
   final String upperText;
   final String belowText;
   final CrossAxisAlignment crossAlign;
+  final bool? isColor;
 
   @override
   Widget build(BuildContext context) {
     return Column(
       crossAxisAlignment: crossAlign,
       children: [
-        TextStyle3(text: upperText),
+        TextStyle3(text: upperText, isColor: isColor),
         const SizedBox(height: 3),
-        TextStyle4(text: belowText),
+        TextStyle4(text: belowText, isColor: isColor),
       ],
     );
   }

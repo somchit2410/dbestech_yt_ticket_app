@@ -26,7 +26,7 @@ class TicketView extends StatelessWidget {
     return SizedBox(
       // ກຳນົດຂະໜາດຄວາມກວ້າງ = 85% ຂອງຂະໜາດໜ້າຈໍໂທລະສັບ
       width: size.width * 0.85,
-      height: 179,
+      height: 166,
       child: Container(
         margin: EdgeInsets.only(right: wholeScreen == true ? 0 : 16),
         child: Column(
@@ -53,34 +53,39 @@ class TicketView extends StatelessWidget {
 
                       Expanded(child: Container()),
                       // ສັນຍາລັກຍົນບີນ
-                      const BigDot(),
+                      BigDot(isColor: isColor),
                       // Stack ໃຊ້ສາລັບໃຫ້ widgets ຊ້ອນທັບກັນໄດ້
                       Expanded(
                         child: Stack(
                           children: [
-                            const SizedBox(
+                            SizedBox(
                               height: 24,
                               child: AppLayoutBuilderWidget(
                                 randomDivider: 6,
+                                isColor: isColor,
                               ),
                             ),
                             Center(
                               child: Transform.rotate(
                                 angle: 1.57,
-                                child: const Icon(
+                                child: Icon(
                                   Icons.local_airport_rounded,
-                                  color: Colors.white,
+                                  color: isColor == null
+                                      ? Colors.white
+                                      : AppStyle.dotColor,
                                 ),
                               ),
                             ),
                           ],
                         ),
                       ),
-                      const BigDot(),
+                      BigDot(isColor: isColor),
                       Expanded(child: Container()),
 
                       TextStyle3(
-                          text: ticket["to"]["code"], textAlign: TextAlign.end),
+                          text: ticket["to"]["code"],
+                          isColor: isColor,
+                          textAlign: TextAlign.end),
                     ],
                   ),
 
@@ -91,14 +96,18 @@ class TicketView extends StatelessWidget {
                     children: [
                       SizedBox(
                           width: 100,
-                          child: TextStyle4(text: ticket["from"]["name"])),
+                          child: TextStyle4(
+                            text: ticket["from"]["name"],
+                            isColor: isColor,
+                          )),
                       Expanded(child: Container()),
-                      TextStyle4(text: ticket["flying_time"]),
+                      TextStyle4(text: ticket["flying_time"], isColor: isColor),
                       Expanded(child: Container()),
                       SizedBox(
                         width: 100,
                         child: TextStyle4(
                             text: ticket["to"]["name"],
+                            isColor: isColor,
                             textAlign: TextAlign.end),
                       ),
                     ],
@@ -109,14 +118,23 @@ class TicketView extends StatelessWidget {
 
             // ພາກສ່ວນຂັ້ນກາງລະຫວ່າງເບື້ອງເທິງ ແລະ ລຸ່ມ
             Container(
-              color: AppStyle.ticketOrange,
-              child: const Row(
+              color: isColor == null
+                  ? AppStyle.ticketOrange
+                  : AppStyle.ticketColor,
+              child: Row(
                 children: [
-                  BigCircle(isRight: false),
-                  Expanded(
-                    child: AppLayoutBuilderWidget(randomDivider: 15, width: 7),
+                  BigCircle(
+                    isRight: false,
+                    isColor: isColor,
                   ),
-                  BigCircle(isRight: true)
+                  Expanded(
+                    child: AppLayoutBuilderWidget(
+                      randomDivider: 16,
+                      width: 6,
+                      isColor: isColor,
+                    ),
+                  ),
+                  BigCircle(isRight: true, isColor: isColor)
                 ],
               ),
             ),
@@ -126,10 +144,14 @@ class TicketView extends StatelessWidget {
               // margin ໄລຍະເບື້ອງນອກ
               padding: const EdgeInsets.all(16),
               decoration: BoxDecoration(
-                color: AppStyle.ticketOrange,
-                borderRadius: const BorderRadius.only(
-                    bottomLeft: Radius.circular(21),
-                    bottomRight: Radius.circular(21)),
+                color: isColor == null
+                    ? AppStyle.ticketOrange
+                    : AppStyle.ticketColor,
+                borderRadius: isColor == null
+                    ? const BorderRadius.only(
+                        bottomLeft: Radius.circular(21),
+                        bottomRight: Radius.circular(21))
+                    : const BorderRadius.all(Radius.circular(0)),
               ),
 
               /* ຮູບແບບທີ່ 1 ໃນການວາງ Layout ຂອງພາກສ່ວນປີ້ຍົນ ຄືກັນກັບແບບ 1
@@ -179,16 +201,19 @@ class TicketView extends StatelessWidget {
                     children: [
                       AppColumnTextLayout(
                         upperText: ticket["date"],
+                        isColor: isColor,
                         belowText: "Date",
                         crossAlign: CrossAxisAlignment.start,
                       ),
                       AppColumnTextLayout(
                         upperText: ticket["departure_time"],
+                        isColor: isColor,
                         belowText: "Departure time",
                         crossAlign: CrossAxisAlignment.center,
                       ),
                       AppColumnTextLayout(
                         upperText: ticket["number"].toString(),
+                        isColor: isColor,
                         belowText: "Number",
                         crossAlign: CrossAxisAlignment.end,
                       ),
