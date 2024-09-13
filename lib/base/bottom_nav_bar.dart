@@ -15,7 +15,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
   final appScreens = [
     const HomeScreen(),
     const SearchScreen(),
-    TicketScreen(),
+    const TicketScreen(),
     const Text("Profile"),
   ];
   // change index for BottomNavBar

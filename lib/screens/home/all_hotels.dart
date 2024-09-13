@@ -1,6 +1,6 @@
 import 'package:dbestech_yt_ticket_app/base/res/styles/app_style.dart';
 import 'package:dbestech_yt_ticket_app/base/utils/app_json.dart';
-import 'package:dbestech_yt_ticket_app/screens/home/widgets/hotel.dart';
+import 'package:dbestech_yt_ticket_app/screens/home/widgets/hotel_grid_view.dart';
 import 'package:flutter/material.dart';
 
 class AllHotels extends StatelessWidget {
@@ -15,20 +15,23 @@ class AllHotels extends StatelessWidget {
         centerTitle: true,
         backgroundColor: AppStyle.bgColor,
       ),
-      body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 20),
-        child: GridView.builder(
-          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount: 2,
-            crossAxisSpacing: 16.0,
-            mainAxisSpacing: 16.0,
-            childAspectRatio: 1.0,
+      body: Container(
+        margin: const EdgeInsets.only(left: 8),
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 10),
+          child: GridView.builder(
+            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+              crossAxisCount: 2,
+              crossAxisSpacing: 10.0,
+              mainAxisSpacing: 16.0,
+              childAspectRatio: 0.9,
+            ),
+            itemCount: hotelList.length,
+            itemBuilder: (context, index) {
+              var singleHotel = hotelList[index];
+              return HotelGridView(hotel: singleHotel, index: index);
+            },
           ),
-          itemCount: hotelList.length,
-          itemBuilder: (context, index) {
-            var singleHotel = hotelList[index];
-            return Hotel(hotel: singleHotel);
-          },
         ),
       ),
     );

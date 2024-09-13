@@ -3,6 +3,7 @@ import 'package:dbestech_yt_ticket_app/base/res/app_routes.dart';
 import 'package:dbestech_yt_ticket_app/screens/home/all_hotels.dart';
 
 import 'package:dbestech_yt_ticket_app/screens/home/all_tickets.dart';
+import 'package:dbestech_yt_ticket_app/screens/hotel_details.dart';
 import 'package:dbestech_yt_ticket_app/screens/ticket/ticket_screen.dart';
 import 'package:flutter/material.dart';
 
@@ -33,6 +34,7 @@ class MyApp extends StatelessWidget {
         AppRoutes.allTickets: (context) => const AllTickets(),
         AppRoutes.allHotels: (context) => const AllHotels(),
         AppRoutes.ticketScreen: (context) => const TicketScreen(),
+        AppRoutes.hotelDetails: (context) => const HotelDetails(),
       },
     );
   }

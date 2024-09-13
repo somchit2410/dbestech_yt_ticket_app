@@ -3,4 +3,5 @@ class AppRoutes {
   static const allTickets = "all_tickets";
   static const allHotels = "all_hotels";
   static const ticketScreen = "/ticket_screen";
+  static const hotelDetails = "/hotel_details";
 }
