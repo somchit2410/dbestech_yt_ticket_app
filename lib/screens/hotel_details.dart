@@ -86,16 +86,16 @@ class _HotelDetailsState extends State<HotelDetails> {
           SliverList(
             delegate: SliverChildListDelegate(
               [
-                const Padding(
-                  padding: EdgeInsets.all(16),
-                  child: Text(
-                    "Welcome to Open Space Hotel, your budget-friendly haven in the heart of London! Located in a vibrant neighborhood, our hotel offers comfortable and cozy accommodations at an unbeatable price of just \$25 per night. Whether you're traveling for leisure or business, you'll find everything you need for a pleasant stay. Our rooms are designed to provide a restful escape from the bustling city, with essential amenities such as free Wi-Fi, clean linens, and a comfortable bed. Guests can enjoy our shared lounge area, which features a relaxed atmosphere perfect for meeting fellow travelers or unwinding after a day of sightseeing. We are conveniently located near public transport, local attractions, and a variety of dining options. Stay with us at Open Space Hotel, where comfort meets affordability, and discover the best of London without breaking the bank!",
+                Padding(
+                  padding: const EdgeInsets.all(16),
+                  child: ExpandedTextWidget(
+                    text: hotelList[index]["details"],
                   ),
                 ),
                 const Padding(
                   padding: EdgeInsets.all(16),
                   child: Text(
-                    "Relate Images",
+                    "More Images",
                     style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                   ),
                 ),
@@ -105,19 +105,60 @@ class _HotelDetailsState extends State<HotelDetails> {
                   height: 200,
                   child: ListView.builder(
                     scrollDirection: Axis.horizontal,
-                    itemBuilder: (context, index) => Container(
+                    itemBuilder: (context, imagesIndex) => Container(
                       margin: const EdgeInsets.only(right: 8),
-                      child: Image.network(
-                          "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/15/7d/66/e5/salana-boutique-hotel.jpg?w=1200&h=-1&s=1"),
+                      child: Image.asset(
+                          "assets/images/${hotelList[index]["more_images"][imagesIndex]}"),
                     ),
-                    itemCount: 3,
+                    itemCount: hotelList[index]["more_images"].length,
                   ),
-                )
+                ),
               ],
             ),
           )
         ],
       ),
+    );
+  }
+}
+
+class ExpandedTextWidget extends StatefulWidget {
+  const ExpandedTextWidget({super.key, required this.text});
+  final String text;
+
+  @override
+  State<ExpandedTextWidget> createState() => _ExpandedTextWidgetState();
+}
+
+class _ExpandedTextWidgetState extends State<ExpandedTextWidget> {
+  bool isExpanded = false;
+  _toggleExpanded() {
+    setState(() {
+      isExpanded = !isExpanded;
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    var textWidget = Text(
+      widget.text,
+      maxLines: isExpanded ? null : 10,
+      overflow: isExpanded ? TextOverflow.visible : TextOverflow.ellipsis,
+    );
+
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        textWidget,
+        GestureDetector(
+          onTap: () => _toggleExpanded(),
+          child: Text(
+            isExpanded ? "Less" : "More",
+            style:
+                AppStyle.baseTextStyle.copyWith(color: AppStyle.primaryColor),
+          ),
+        )
+      ],
     );
   }
 }

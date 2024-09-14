@@ -20,7 +20,7 @@ class HotelGridView extends StatelessWidget {
         padding: const EdgeInsets.all(5),
         margin: const EdgeInsets.only(right: 8),
         // width: size.width * 0.6,
-        height: 320,
+        height: 330,
         decoration: BoxDecoration(
           color: AppStyle.primaryColor,
           borderRadius: BorderRadius.circular(18),
@@ -29,7 +29,7 @@ class HotelGridView extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             AspectRatio(
-              aspectRatio: 1.2,
+              aspectRatio: 1.25,
               child: Container(
                 // height: 180,
                 decoration: BoxDecoration(
