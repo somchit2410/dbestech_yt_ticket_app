@@ -3,6 +3,7 @@ import 'package:dbestech_yt_ticket_app/base/res/media.dart';
 import 'package:dbestech_yt_ticket_app/base/res/styles/app_style.dart';
 
 import 'package:dbestech_yt_ticket_app/base/widgets/app_double_text.dart';
+import 'package:dbestech_yt_ticket_app/base/widgets/heading_text.dart';
 import 'package:dbestech_yt_ticket_app/screens/home/widgets/hotel.dart';
 import 'package:dbestech_yt_ticket_app/base/widgets/ticket_view.dart';
 import 'package:fluentui_icons/fluentui_icons.dart';
@@ -39,10 +40,7 @@ class HomeScreen extends StatelessWidget {
                           style: AppStyle.headLineStyle3,
                         ),
                         const SizedBox(height: 5),
-                        Text(
-                          "Book Tickets",
-                          style: AppStyle.headLineStyle1,
-                        ),
+                        const HeadingText(text: "Book Tickets", isColor: false),
                       ],
                     ),
                     Container(

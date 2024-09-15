@@ -1,4 +1,5 @@
 import 'package:dbestech_yt_ticket_app/screens/home/home_screen.dart';
+import 'package:dbestech_yt_ticket_app/screens/profile/profile_screen.dart';
 import 'package:dbestech_yt_ticket_app/screens/search/search_screen.dart';
 import 'package:dbestech_yt_ticket_app/screens/ticket/ticket_screen.dart';
 import 'package:fluentui_icons/fluentui_icons.dart';
@@ -16,7 +17,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
     const HomeScreen(),
     const SearchScreen(),
     const TicketScreen(),
-    const Text("Profile"),
+    const ProfileScreen(),
   ];
   // change index for BottomNavBar
   int _seletedIndex = 0;

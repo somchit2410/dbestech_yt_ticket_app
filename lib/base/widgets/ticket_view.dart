@@ -26,7 +26,9 @@ class TicketView extends StatelessWidget {
     return SizedBox(
       // ກຳນົດຂະໜາດຄວາມກວ້າງ = 85% ຂອງຂະໜາດໜ້າຈໍໂທລະສັບ
       width: size.width * 0.85,
-      height: 179,
+      // ຄວາມສູງຂອງປີ້ຍົນ (ມີຜົນກັບໜ້າສະແດງລາຍລະອຽດປີ້ຍົນ) ສາມາດແກ້ໄຂຕາມຂະໜາດຂອງໜ້າຈໍ
+      // height : 169,    ກໍລະນີຕ້ອງການກຳນົດຄ່າຄົງທີ່
+      height: size.height * 0.202,
       child: Container(
         margin: EdgeInsets.only(right: wholeScreen == true ? 0 : 16),
         child: Column(

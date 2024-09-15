@@ -108,6 +108,8 @@ class _HotelDetailsState extends State<HotelDetails> {
                     itemBuilder: (context, imagesIndex) => Container(
                       margin: const EdgeInsets.only(right: 8),
                       child: Image.asset(
+                          // "index" ແມ່ນອ້າງອິງເຖິງລຳດັບຂອງຊຸດຂໍ້ມູນ (map) ແຕ່ລະໂຕ (outer)
+                          // "imagesIndex" ແມ່ນອ້າງອິງເຖິງລຳດັບຂອງລາຍການພາຍໃນ "more_images" ແຕ່ລະໂຕ (inner)
                           "assets/images/${hotelList[index]["more_images"][imagesIndex]}"),
                     ),
                     itemCount: hotelList[index]["more_images"].length,
