@@ -3,9 +3,10 @@ import 'package:dbestech_yt_ticket_app/base/res/app_routes.dart';
 import 'package:dbestech_yt_ticket_app/screens/home/all_hotels.dart';
 
 import 'package:dbestech_yt_ticket_app/screens/home/all_tickets.dart';
-import 'package:dbestech_yt_ticket_app/screens/hotel_details.dart';
+import 'package:dbestech_yt_ticket_app/screens/home/hotel_details.dart';
 import 'package:dbestech_yt_ticket_app/screens/ticket/ticket_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 void main() {
   runApp(const MyApp());
@@ -16,7 +17,8 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    // ປ່ຽນຈາກ MaterialApp ມາເປັນ GetMaterialApp
+    return GetMaterialApp(
       title: 'Flutter Demo',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
@@ -30,7 +32,7 @@ class MyApp extends StatelessWidget {
 
       // ສ້າງ map ຂອງໜ້າແອັບແຕ່ລະໜ້າເພື່ອຄວາມງ່າຍໃນການ navigate ໂດຍໃຊ້ key ແທນ
       routes: {
-        AppRoutes.homePage: (context) => const BottomNavBar(),
+        AppRoutes.homePage: (context) => BottomNavBar(),
         AppRoutes.allTickets: (context) => const AllTickets(),
         AppRoutes.allHotels: (context) => const AllHotels(),
         AppRoutes.ticketScreen: (context) => const TicketScreen(),

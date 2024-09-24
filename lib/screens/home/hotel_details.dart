@@ -1,6 +1,8 @@
 import 'package:dbestech_yt_ticket_app/base/res/styles/app_style.dart';
 import 'package:dbestech_yt_ticket_app/base/utils/app_json.dart';
+import 'package:dbestech_yt_ticket_app/controller/text_expansion_controller.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class HotelDetails extends StatefulWidget {
   const HotelDetails({super.key});
@@ -124,43 +126,39 @@ class _HotelDetailsState extends State<HotelDetails> {
   }
 }
 
-class ExpandedTextWidget extends StatefulWidget {
-  const ExpandedTextWidget({super.key, required this.text});
+class ExpandedTextWidget extends StatelessWidget {
+  ExpandedTextWidget({super.key, required this.text});
+
+  final TextExpansionController controller = Get.put(TextExpansionController());
   final String text;
 
   @override
-  State<ExpandedTextWidget> createState() => _ExpandedTextWidgetState();
-}
-
-class _ExpandedTextWidgetState extends State<ExpandedTextWidget> {
-  bool isExpanded = false;
-  _toggleExpanded() {
-    setState(() {
-      isExpanded = !isExpanded;
-    });
-  }
-
-  @override
   Widget build(BuildContext context) {
-    var textWidget = Text(
-      widget.text,
-      maxLines: isExpanded ? null : 10,
-      overflow: isExpanded ? TextOverflow.visible : TextOverflow.ellipsis,
-    );
-
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        textWidget,
-        GestureDetector(
-          onTap: () => _toggleExpanded(),
-          child: Text(
-            isExpanded ? "Less" : "More",
-            style:
-                AppStyle.baseTextStyle.copyWith(color: AppStyle.primaryColor),
-          ),
-        )
-      ],
+    // ທຸກການປ່ຽນແປງທີ່ຈະເກີດກັບ UI ແມ່ນຈະຕ້ອງຢູ່ພາຍໃນ Obx
+    return Obx(
+      () {
+        var textWidget = Text(
+          text,
+          maxLines: controller.isExpanded.value ? null : 10,
+          overflow: controller.isExpanded.value
+              ? TextOverflow.visible
+              : TextOverflow.ellipsis,
+        );
+        return Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            textWidget,
+            GestureDetector(
+              onTap: () => controller.toggleExpanded(),
+              child: Text(
+                controller.isExpanded.value ? "Less" : "More",
+                style: AppStyle.baseTextStyle
+                    .copyWith(color: AppStyle.primaryColor),
+              ),
+            )
+          ],
+        );
+      },
     );
   }
 }
